@@ -1,0 +1,15 @@
+<odoo>
+    <record id="view_stock_picking_inherit_form" model="ir.ui.view">
+        <field name="name">stock.picking.form.view.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='move_ids_without_package']/tree" position="attributes">
+                <attribute name="decoration-info">is_check</attribute>
+            </xpath>
+            <xpath expr="//field[@name='move_ids_without_package']/tree//field[@name='product_id']" position="before">
+                <field name="is_check" nolabel="0" width="50"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

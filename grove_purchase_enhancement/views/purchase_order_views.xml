@@ -25,6 +25,9 @@
                     </div>
                 </div>
             </xpath>
+            <xpath expr="//field[@name='order_line']/form//group//field[@name='taxes_id']" position="after">
+                <field name="is_check" string="Is Check?"/>
+            </xpath>
         </field>
     </record>
 </odoo>

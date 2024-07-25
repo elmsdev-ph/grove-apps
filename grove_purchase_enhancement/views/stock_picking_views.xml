@@ -12,4 +12,26 @@
             </xpath>
         </field>
     </record>
+    <record id="view_stock_move_inherit_kanban" model="ir.ui.view">
+        <field name="name">stock.move.kanban.inherit</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_move_kandan"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="inside">
+                <field name="is_check"/>
+            </xpath>
+            <xpath expr="//templates/t[@t-name='kanban-box']//div[@class='o_kanban_record_body']" position="inside">
+                <div class="row">
+                    <div class="col-12 text-muted">
+                        <t t-if="record.is_check.raw_value">
+                            <span class="badge bg-success">Checked</span>
+                        </t>
+                        <t t-if="!record.is_check.raw_value">
+                            <span class="badge bg-secondary">Not Checked</span>
+                        </t>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
 </odoo>

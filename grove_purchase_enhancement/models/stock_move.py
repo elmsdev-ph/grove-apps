@@ -10,6 +10,13 @@ class StockMove(models.Model):
 class ProductProduct(models.Model):
     _inherit = 'product.product'
 
+    @api.onchange('product_tmpl_id')
+    def _onchange_product_id(self):
+        if self.product_tmpl_id:
+            self.sku = self.product_tmpl_id.sku
+        else:
+            self.sku = ""
+
     sku = fields.Char(string='SKU')
 
 class ProductTemplate(models.Model):
@@ -21,4 +28,4 @@ class ProductTemplate(models.Model):
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
-    sku = fields.Char(related='product_id.sku', string='SKU', readonly=True)
+    sku = fields.Char(related='product_template_id.sku', string='SKU', readonly=True)    

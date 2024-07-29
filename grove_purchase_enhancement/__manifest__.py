@@ -7,10 +7,11 @@
     """,
     'category': 'Purchases',
     'author': 'Grove',
-    'depends': ['purchase', 'stock'],
+    'depends': ['purchase', 'stock', 'sale'],
     'data': [
         'views/purchase_order_views.xml',
         'views/stock_picking_views.xml',
+        'views/sale_order.xml',
     ],
     'installable': True,
     'application': False,

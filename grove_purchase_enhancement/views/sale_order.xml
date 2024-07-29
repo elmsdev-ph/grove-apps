@@ -1,0 +1,33 @@
+<odoo>
+    <record id="view_sale_order_inherit_form_view" model="ir.ui.view">
+        <field name="name">sale.order.form.view.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/tree//field[@name='product_id']" position="after">
+                <field name="sku"/>
+            </xpath>
+            <xpath expr="//kanban" position="inside">
+                <field name="sku"/>
+            </xpath>
+            <xpath expr="//templates/t[@t-name='kanban-box']//div[@class='row']" position="before">
+                <div class="row">
+                    <div class="col text-muted">
+                        <span t-if="record.sku.value">SKU: </span>
+                        <t t-out="record.sku.value"/>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_product_template_inherit_form_view" model="ir.ui.view">
+        <field name="name">product.template.form.view.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='default_code']" position="after">
+                <field name="sku"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

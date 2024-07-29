@@ -9,13 +9,19 @@
             </xpath>
             <xpath expr="//field[@name='order_line']/tree//field[@name='product_id']" position="before">
                 <field name="is_check" nolabel="0" width="50"/>
+                <field name="sku" nolabel="0" width="50"/>
             </xpath>
             <xpath expr="//kanban" position="inside">
                 <field name="is_check"/>
+                <field name="sku"/>
             </xpath>
             <xpath expr="//templates/t[@t-name='kanban-box']//div[@class='row']" position="before">
                 <div class="row">
-                    <div class="col-12 text-muted">
+                    <div class="col text-muted">
+                        <span t-if="record.sku.value">SKU: </span>
+                        <t t-out="record.sku.value"/>
+                    </div>
+                     <div class="col-12 text-muted">
                         <t t-if="record.is_check.raw_value">
                             <span class="badge bg-success">Checked</span>
                         </t>

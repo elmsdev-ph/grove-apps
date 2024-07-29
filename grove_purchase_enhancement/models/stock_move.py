@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class StockMove(models.Model):
@@ -10,7 +10,14 @@ class StockMove(models.Model):
 class ProductProduct(models.Model):
     _inherit = 'product.product'
 
-    sku = fields.Char(related='product_tmpl_id.sku', string='SKU')
+    api.onchange('product_tmpl_id')
+    def _onchange_product_id(self):
+        if self.product_tmpl_id:
+            self.sku = self.product_tmpl_id.sku
+        else:
+            self.sku = ""
+
+    sku = fields.Char(string='SKU')
 
 class ProductTemplate(models.Model):
     _inherit = 'product.template'

@@ -33,6 +33,7 @@
             </xpath>
             <xpath expr="//field[@name='order_line']/form//group//field[@name='taxes_id']" position="after">
                 <field name="is_check" string="Is Check?"/>
+                <field name="sku" string="SKU"/>
             </xpath>
         </field>
     </record>

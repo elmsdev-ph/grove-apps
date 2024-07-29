@@ -18,6 +18,9 @@
                     </div>
                 </div>
             </xpath>
+            <xpath expr="//field[@name='order_line']/form//group//field[@name='tax_id']" position="after">
+                <field name="sku" string="SKU"/>
+            </xpath>
         </field>
     </record>
     <record id="view_product_template_inherit_form_view" model="ir.ui.view">

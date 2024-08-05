@@ -9,6 +9,8 @@
     'author': 'Grove',
     'depends': ['purchase', 'stock', 'sale'],
     'data': [
+        'security/ir.model.access.csv',
+        'data/grove_order_cron.xml',
         'views/purchase_order_views.xml',
         'views/stock_picking_views.xml',
         'views/sale_order.xml',

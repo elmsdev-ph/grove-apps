@@ -23,9 +23,3 @@ class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
     sku = fields.Char(string='SKU')
-
-
-class SaleOrderLine(models.Model):
-    _inherit = 'sale.order.line'
-
-    sku = fields.Char(related='product_template_id.sku', string='SKU', readonly=True)    
